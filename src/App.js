@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Home from './Home';
 import Contact from './Contact';
 import About from './About';
-import { BrowserRouter, Link, Route } from "react-router-dom"
+import { BrowserRouter, NavLink, Route,Switch } from "react-router-dom"
 
 
 function App() {
@@ -14,26 +14,29 @@ function App() {
         <h1>My React App</h1>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink activeStyle={{color:"red"}} to="/home">Home</NavLink>
           </li>
           <li>
-            <Link to="/contact">Contact</Link>
+            <NavLink activeStyle={{color:"red"}} to="/contact">Contact</NavLink>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <NavLink activeStyle={{color:"red"}} to="/about">About</NavLink>
           </li>
         </ul>
        {/*  <Route path="/" exact component={Home}/> */}
       {/*  <Route path="/" exact render={(props)=><Home {...props}/>} /> */}
-        <Route path="/" exact>
+       <Switch>
+        <Route path="/home" >
         <Home /> 
         </Route>
-        <Route path="/contact" exact >
+        <Route path="/contact" >
           <Contact/>
         </Route>
-        <Route path="/about" exact>
-          <About count={count}/> 
+        <Route path="/about" >
+          <About /> 
         </Route>
+        
+        </Switch>
 
         {/*  <Home/>
     <Contact/>
